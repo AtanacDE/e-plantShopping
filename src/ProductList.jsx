@@ -298,9 +298,14 @@ function ProductList({ onHomeClick }) {
                                 <div className="product-card" key={plantIndex}>
                                     <img className="product-image" src={plant.image} alt={plant.name} />
                                     <div className="product-title">{plant.name}</div>
-                                    {/*Similarly like the above plant.name show other details like description and cost*/}
-                                    <button  className="product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button>
-                                </div>
+                                    <p className="product-price">{plant.cost}</p>
+                                    <p>{plant.description}</p>
+                                    {cart.items.some(item => item.name === plant.name) ? (
+                                        <button className="product-button added-to-cart">Added to Cart</button>
+                                    ) : (
+                                        <button className="product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button>
+                                    )}
+                                    </div>
                                 ))}
                             </div>
                         </div>
